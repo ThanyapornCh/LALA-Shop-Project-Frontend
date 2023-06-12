@@ -39,6 +39,7 @@ export default function RegisterForm({ onClose }) {
         toast.success('Success register!,Please login to continue.');
       }
     } catch (err) {
+      console.log(input);
       console.log(err);
       toast.error(err.response?.data.message);
     } finally {

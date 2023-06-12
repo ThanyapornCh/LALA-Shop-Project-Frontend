@@ -7,10 +7,15 @@ const registerSchema = Joi.object({
   lastName: Joi.string().trim().required().messages({
     'string.empty': 'last name is required',
   }),
-  email: Joi.string().email({ tlds: false }).required().trim().messages({
-    'any.match': 'must be a valid email address',
-    'string.empty': 'email is required',
-  }),
+  email: Joi.string()
+    .valid()
+    .email({ minDomainSegments: 1, tlds: { allow: ['com'] } })
+    .required()
+    .messages({
+      'any.only': 'must be a valid email address',
+      'string.empty': 'email is required',
+    }),
+
   password: Joi.string().alphanum().min(6).required().trim().messages({
     'string.empty': 'password is required',
     'string.alphanum': 'password  must contain number or alphabet',

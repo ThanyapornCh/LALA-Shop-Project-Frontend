@@ -9,7 +9,7 @@ export default function RegisterContainer() {
       <button
         data-modal-target="defaultModal"
         data-modal-toggle="defaultModal"
-        className="block bg-[#F67280]-500 hover:bg-[#F67280]-700 text-white rounded-x1 flex justify-center no-underline hover:underline"
+        className=" bg-[#F67280]-500 hover:bg-[#F67280]-700 text-white rounded-x1 flex justify-center no-underline hover:underline"
         onClick={() => setOpen(true)}
       >
         Create New Account
