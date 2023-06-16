@@ -45,7 +45,7 @@ export default function Modal({ open, onClose, children, title }) {
                 </button>
               </div>
               {/* <!-- Modal body --> */}
-              <div className="p-6 space-y-6">{children}</div>
+              <div className="p-6 space-y-6 ">{children}</div>
               {/* <!-- Modal footer --> */}
               {open && (
                 <div
