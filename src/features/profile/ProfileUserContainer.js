@@ -1,10 +1,32 @@
-import Avatar from '../../components/Avatar';
-
+import { useEffect, useState } from 'react';
+import { STATUS_ME } from '../../config/constant';
 import ProfileCover from './ProfileCover';
 import ProfileForm from './ProfileForm';
 import ProfilePanel from './ProfilePanel';
+import { useParams } from 'react-router-dom';
+import * as userApi from '../../apis/user-api';
+import useAuth from '../../hooks/useAuth';
 
 export default function ProfileUserContainer() {
+  const [profileUser, setProfileUser] = useState({});
+  const [statusWithAuthUser, setStatusWithAuthUser] = useState(STATUS_ME);
+  const { authenticatedUser } = useAuth();
+
+  // const { userId } = useParams();
+  // console.log(userId);
+
+  // useEffect(() => {
+  //   const fetchProfileUser = async () => {
+  //     const res = await userApi.getProfileUser(userId);
+  //     setProfileUser(res.data.user);
+  //     setStatusWithAuthUser(res.data.statusWithAuthUser);
+  //   };
+  //   fetchProfileUser();
+  // }, [userId]);
+
+  const updateProfileUser = value => {
+    setProfileUser({ ...profileUser, ...value });
+  };
   return (
     <>
       <div className="bg-white block ">
@@ -15,8 +37,13 @@ export default function ProfileUserContainer() {
             ! ------------------------------------------------------------
             !--> */}
           <div className="w-full">
-            <ProfileCover />
-            <ProfilePanel />
+            <ProfileCover coverImage={authenticatedUser.coverImage} />
+            <ProfilePanel
+              profileUser={profileUser}
+              statusWithAuthUser={statusWithAuthUser}
+              setStatusWithAuthUser={setStatusWithAuthUser}
+              updateProfileUser={updateProfileUser}
+            />
           </div>
 
           {/* <!--

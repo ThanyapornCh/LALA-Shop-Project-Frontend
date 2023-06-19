@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <OrderStatusPage />,
       },
       {
-        path: '/profileuser',
+        path: '/profileuser', ///profileuser/:userId
         element: <ProfileUserPage />,
       },
     ],

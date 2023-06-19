@@ -4,7 +4,7 @@ import CoverImageForm from './CoverImageForm';
 import ProfileImageForm from './ProfileImageForm';
 import { Edit } from '../../assets/icon';
 
-export default function MeAction() {
+export default function MeAction({ updateProfileUser }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -17,9 +17,15 @@ export default function MeAction() {
           <Edit />
         </div>
       </button>
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <ProfileImageForm onSuccess={() => setOpen(false)} />
-        <CoverImageForm />
+      <Modal open={open} onClose={() => setOpen(false)} title="Edit">
+        <ProfileImageForm
+          onSuccess={() => setOpen(false)}
+          updateProfileUser={updateProfileUser}
+        />
+        <CoverImageForm
+          onSuccess={() => setOpen(false)}
+          updateProfileUser={updateProfileUser}
+        />
       </Modal>
     </>
   );

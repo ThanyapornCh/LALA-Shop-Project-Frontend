@@ -1,7 +1,7 @@
 import useAuth from '../../hooks/useAuth';
 
 export default function ProfileForm() {
-  const { logout } = useAuth();
+  const { logout, authenticatedUser } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -14,8 +14,10 @@ export default function ProfileForm() {
     <>
       <form>
         <div className="flex flex-col mt-4 space-x-3 md:mt-6  ">
-          <div className="mb-1  h-5 w-40">
-            <h2 className="font-bold mb-0"> Maria R.</h2>
+          <div className="mb-2  h-5 w-40">
+            <h2 className="font-bold mb-0">
+              {authenticatedUser.firstName} {authenticatedUser.lastName}
+            </h2>
           </div>
           <div className="flex justify-center items-center my-2">
             <button

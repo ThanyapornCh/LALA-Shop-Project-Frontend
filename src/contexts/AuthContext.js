@@ -1,6 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import * as authApi from '../apis/auth-api';
+
 import {
   getAccessToken,
   setAccessToken,
@@ -13,19 +14,19 @@ export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthenticatedUser] = useState(
     getAccessToken() ? true : null
   );
-  // useEffect(() => {
-  //   const fetchAuthUser = async () => {
-  //     try {
-  //       const res = await authApi.getMe();
-  //       setAuthenticatedUser(res.data.user);
-  //     } catch (err) {
-  //       removeAccessToken();
-  //     }
-  //   };
-  //   if (getAccessToken()) {
-  //     fetchAuthUser();
-  //   }
-  // }, []);
+  useEffect(() => {
+    const fetchAuthUser = async () => {
+      try {
+        const res = await authApi.getMe();
+        setAuthenticatedUser(res.data.user);
+      } catch (err) {
+        removeAccessToken();
+      }
+    };
+    if (getAccessToken()) {
+      fetchAuthUser();
+    }
+  }, []);
 
   const login = async (email, password) => {
     const res = await authApi.login({ email, password });
@@ -38,8 +39,14 @@ export default function AuthContextProvider({ children }) {
     setAuthenticatedUser(null);
   };
 
+  const updateProfile = data => {
+    setAuthenticatedUser({ ...authenticatedUser, ...data });
+  };
+
   return (
-    <AuthContext.Provider value={{ authenticatedUser, login, logout }}>
+    <AuthContext.Provider
+      value={{ authenticatedUser, login, logout, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );
