@@ -1,3 +1,3 @@
-export const STATUS_ME = 'ME';
-export const STATUS_USER = 'USER';
-export const STATUS_ADMIN = 'ADMIN';
+// export const STATUS_ME = 'ME';
+// export const STATUS_USER = 'user';
+// export const STATUS_ADMIN = 'admin';

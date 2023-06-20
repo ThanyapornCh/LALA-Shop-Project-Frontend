@@ -7,6 +7,14 @@ import RedirectIfAuthenticate from '../features/auth/RedirectIfAuthenticate';
 import ProtectedRoute from '../features/auth/ProtectedRoute';
 import AuthLayout from '../layouts/AuthLayout';
 import OrderStatusPage from '../pages/OrderStatusPage';
+import ProfileAdminPage from '../pages/admin/ProfileAdminPage';
+import ProtectedRouteAdmin from '../features/auth/admin/ProtectedRouteAdmin';
+import AuthLayoutAdmin from '../layouts/admin/AuthLayoutAdmin';
+import LoginAdminPage from '../pages/admin/LoginAdminPage';
+import RedirectIfAuthenticateAdmin from '../features/auth/admin/RedirectIfAuthenticateAdmin';
+import PaymentPage from '../pages/admin/PaymentPage';
+import AddProductPage from '../pages/admin/AddProductPage';
+import CheckOrderPage from '../pages/admin/CheckOrderPage';
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -36,6 +44,39 @@ const router = createBrowserRouter([
       {
         path: '/profileuser', ///profileuser/:userId
         element: <ProfileUserPage />,
+      },
+    ],
+  },
+  // {
+  //   path: '/loginadmin',
+  //   element: (
+  //     <RedirectIfAuthenticateAdmin>
+  //       <LoginAdminPage />
+  //     </RedirectIfAuthenticateAdmin>
+  //   ),
+  // },
+  {
+    element: (
+      <ProtectedRouteAdmin>
+        <AuthLayoutAdmin />
+      </ProtectedRouteAdmin>
+    ),
+    children: [
+      {
+        path: '/profieadmin',
+        element: <ProfileAdminPage />,
+      },
+      {
+        path: '/addproduct',
+        element: <AddProductPage />,
+      },
+      {
+        path: '/checkorder',
+        element: <CheckOrderPage />,
+      },
+      {
+        path: '/payment',
+        element: <PaymentPage />,
       },
     ],
   },
