@@ -1,9 +1,10 @@
 import CoverImage from '../../../components/CoverImage';
-export default function ProfileAdminCover() {
+
+export default function ProfileAdminCover({ coverImage }) {
   return (
     <>
       <div className=" rounded-t-lg">
-        <CoverImage />
+        <CoverImage src={coverImage} />
       </div>
     </>
   );

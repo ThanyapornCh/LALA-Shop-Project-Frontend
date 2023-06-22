@@ -19,7 +19,7 @@ export default function FooterItem() {
           </div>
         </button>
       </Link>
-      <Link to="/orderstatus">
+      <Link to="/payment">
         <button className="flex-col m-2 p-2 text-3xl ">
           <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
             <Cash />

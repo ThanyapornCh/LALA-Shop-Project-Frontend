@@ -3,16 +3,16 @@ import { User, Cash } from '../../assets/icon';
 export default function FooterItemAdmin() {
   return (
     <>
-      <Link to="/payment">
+      <Link to="/mybalance">
         <button className="flex-col m-2 p-2 text-3xl ">
-          <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
+          <div className="w-[30px] h-[30px] fill-purple-800 mx-3">
             <Cash />
           </div>
         </button>
       </Link>
-      <Link to="/profieadmin">
+      <Link to="/profileadmin">
         <button className="flex-col m-2 p-2 text-3xl ">
-          <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
+          <div className="w-[30px] h-[30px] fill-purple-800 mx-3">
             <User />
           </div>
         </button>

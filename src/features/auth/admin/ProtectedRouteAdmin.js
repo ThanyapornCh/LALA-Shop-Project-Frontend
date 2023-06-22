@@ -4,8 +4,15 @@ import { Navigate } from 'react-router-dom';
 
 export default function ProtectedRouteAdmin({ children }) {
   const { authenticatedUser } = useAuth();
-  if (authenticatedUser === 'user') {
+  // const { status } = authenticatedUser;
+  if (authenticatedUser === 'admin') {
+    return <Navigate to={'/profileadmin'} />;
+  } else if (!authenticatedUser) {
     return <Navigate to={'/login'} />;
   }
+  // else if (authenticatedUser !== 'admin') {
+  //   return <Navigate to={'/'} />;
+  // }
+
   return children;
 }

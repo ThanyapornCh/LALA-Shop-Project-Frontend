@@ -12,9 +12,11 @@ import ProtectedRouteAdmin from '../features/auth/admin/ProtectedRouteAdmin';
 import AuthLayoutAdmin from '../layouts/admin/AuthLayoutAdmin';
 import LoginAdminPage from '../pages/admin/LoginAdminPage';
 import RedirectIfAuthenticateAdmin from '../features/auth/admin/RedirectIfAuthenticateAdmin';
-import PaymentPage from '../pages/admin/PaymentPage';
+import PaymentPage from '../pages/PaymentPage';
 import AddProductPage from '../pages/admin/AddProductPage';
 import CheckOrderPage from '../pages/admin/CheckOrderPage';
+import MyBalancePage from '../pages/admin/MyBalancePage';
+import AccountPage from '../pages/AccountPage';
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
         element: <OrderStatusPage />,
       },
       {
+        path: '/payment',
+        element: <PaymentPage />,
+      },
+      {
+        path: '/myaccount',
+        element: <AccountPage />,
+      },
+      {
         path: '/profileuser', ///profileuser/:userId
         element: <ProfileUserPage />,
       },
@@ -58,12 +68,14 @@ const router = createBrowserRouter([
   {
     element: (
       <ProtectedRouteAdmin>
+        {/* <ProtectedRoute> */}
         <AuthLayoutAdmin />
+        {/* </ProtectedRoute> */}
       </ProtectedRouteAdmin>
     ),
     children: [
       {
-        path: '/profieadmin',
+        path: '/profileadmin',
         element: <ProfileAdminPage />,
       },
       {
@@ -75,8 +87,8 @@ const router = createBrowserRouter([
         element: <CheckOrderPage />,
       },
       {
-        path: '/payment',
-        element: <PaymentPage />,
+        path: '/mybalance',
+        element: <MyBalancePage />,
       },
     ],
   },

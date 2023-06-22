@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 export default function ProfileForm() {
@@ -20,26 +21,30 @@ export default function ProfileForm() {
             </h2>
           </div>
           <div className="flex justify-center items-center my-2">
-            <button
-              className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-blue-500
+            <Link to="/myaccount">
+              <button
+                className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-blue-500
               hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "
-              type="button"
-            >
-              Order Status
-            </button>
+                type="button"
+              >
+                My Account
+              </button>
+            </Link>
           </div>
           <div className="flex justify-center  items-center my-2">
-            <button
-              className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-sky-500
+            <Link to="/orderstatus">
+              <button
+                className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-sky-500
               hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "
-              type="button"
-            >
-              Payment
-            </button>
+                type="button"
+              >
+                Order Status
+              </button>
+            </Link>
           </div>
           <div className="flex justify-center items-center my-2">
             <button
-              className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 duration-300 ease-in "
+              className=" font-bold rounded-3xl px-10 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 duration-300 ease-in "
               type="button"
               onClick={handleLogout}
             >

@@ -1,9 +1,16 @@
-import MeAction from '../MeAction';
+import { STATUS_ADMIN } from '../../../config/constant';
+import AdminMeAction from './AdminMeAction';
 
-export default function ProfileAdminAction() {
+export default function ProfileAdminAction({
+  statusWithAuthUser,
+  setStatusWithAuthUser,
+  updateProfileUser,
+}) {
   return (
     <>
-      <MeAction />
+      {statusWithAuthUser === STATUS_ADMIN && (
+        <AdminMeAction updateProfileUser={updateProfileUser} />
+      )}
     </>
   );
 }

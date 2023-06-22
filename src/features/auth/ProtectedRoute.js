@@ -5,6 +5,8 @@ export default function ProtectedRoute({ children }) {
   const { authenticatedUser } = useAuth();
   if (!authenticatedUser) {
     return <Navigate to={'/login'} />;
+  } else if (authenticatedUser === 'user') {
+    return <Navigate to={'/'} />;
   }
   return children;
 }
