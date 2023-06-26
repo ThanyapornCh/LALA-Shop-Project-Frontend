@@ -1,3 +1,5 @@
+import CheckorderContainer from '../../features/order/admin/CheckOrderContiner';
+
 export default function CheckOrderPage() {
-  return <div>Check Order Status</div>;
+  return <CheckorderContainer />;
 }
