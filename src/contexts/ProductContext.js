@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import * as adminApi from '../apis/admin-api';
+import axios from '../config/axios';
+
+export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState([]);
+  console.log('product');
   const [newProduct, setNewProduct] = useState({
     name: '',
     price: '',
     description: '',
+    price: '',
+    quantity: '',
   });
   const [newProductImage, setNewProductImage] = useState(null);
   const formData = new FormData();
@@ -17,9 +23,19 @@ export default function ProductContextProvider({ children }) {
   formData.append('price', newProduct.price);
   formData.append('description', newProduct.description);
 
-  const handleCreate = async () => {
-    await adminApi.post(formData);
+  const handleCreate = async e => {
+    e.preventDefault();
+    await axios.post('/admin/create', formData);
   };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const res = await adminApi.getAllProduct();
+      setProduct(res.data.product);
+    };
+    fetchProduct();
+  }, []);
+
   return (
     <ProductContext.Provider
       vallue={{

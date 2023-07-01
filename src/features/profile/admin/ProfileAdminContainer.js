@@ -26,7 +26,7 @@ export default function ProfileAdminContainer() {
               setStatusWithAuthUser={setStatusWithAuthUser}
             />
           </div>
-          <div className="bg-primary border border-primary rounded-b-lg p-5 pt-12 flex flex-col">
+          <div className="bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700  rounded-b-lg p-5 pt-12 flex flex-col">
             <ProfileAdminForm />
           </div>
         </div>

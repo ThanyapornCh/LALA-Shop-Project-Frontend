@@ -12,7 +12,7 @@ export default function EditProduct() {
             <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
               Brand name
               <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Choose a brand</option>
+                <option value="selected">Choose a brand</option>
                 <option>Laneigh</option>
                 <option>Etude</option>
                 <option>Aness</option>
@@ -71,12 +71,20 @@ export default function EditProduct() {
                 name="quantity"
               />
             </label>
-            <button
-              className=" rounded-full p-2  bg-gradient-to-br from-purple-600 to-pink-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
-              type="button"
-            >
-              Update
-            </button>
+            <div className="grid grid-cols-2 gap-4 place-content-end">
+              <button
+                className=" rounded-full p-2  bg-gradient-to-br from-purple-600 to-pink-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
+                type="button"
+              >
+                Update
+              </button>
+              <button
+                className=" rounded-full p-2 bg-gradient-to-br from-red-600 to-yellow-400 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </form>

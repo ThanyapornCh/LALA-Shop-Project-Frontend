@@ -1,11 +1,15 @@
 import { useState } from 'react';
+
 import { PlusCircle } from '../../assets/icon';
+// import useProduct from '../../hooks/useProduct';
 import Modal from '../../components/Modal';
 import AddProduct from './AddProduct';
 import AddProductList from './AddProductList';
 
 export default function AddProductContainer() {
   const [open, setOpen] = useState(false);
+  // const { product, setProduct } = useProduct();
+
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -53,7 +57,11 @@ export default function AddProductContainer() {
                 </tr>
               </thead>
               <tbody>
-                <AddProductList />
+                <AddProductList
+                // key={el.id}
+                // product={el}
+                // setProduct={setProduct}
+                />
               </tbody>
             </table>
             <div className="w-full py-8 flex justify-center items-center">

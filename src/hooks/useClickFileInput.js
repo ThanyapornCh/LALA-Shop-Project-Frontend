@@ -1,17 +1,6 @@
-import { useRef, useState } from 'react';
+import { useContext } from 'react';
+import { ClickFileInputContext } from '../contexts/ClickFileInputContext';
 
 export default function useClickFileInput() {
-  const [file, setFile] = useState(null);
-  const ref = useRef();
-  const openFileInput = () => ref.current.click();
-  const onChangeFileInput = e => {
-    if (e.target.files[0]) {
-      setFile(e.target.files[0]);
-    }
-  };
-  const onCancel = () => {
-    setFile(null);
-    ref.current.value = null;
-  };
-  return { file, ref, openFileInput, onChangeFileInput, onCancel };
+  return useContext(ClickFileInputContext);
 }

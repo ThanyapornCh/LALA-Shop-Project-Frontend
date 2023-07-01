@@ -51,7 +51,7 @@ export default function ProfileUserContainer() {
             ! Profile general information
             ! ------------------------------------------------------------
             !--> */}
-          <div className="bg-primary border border-primary rounded-b-lg p-5 pt-12 flex flex-col">
+          <div className="bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 rounded-b-lg p-5 pt-12 flex flex-col">
             {/* <div className="mb-1 bg-gray-200 border border-gray-300 h-5 w-40"></div>
             <div className="mb-1 bg-gray-200 border border-gray-300 h-5 w-96"></div>
             <div className="text-sm mt-2 text-gray-200">
