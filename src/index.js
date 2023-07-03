@@ -7,15 +7,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContextProvider from './contexts/AuthContext';
 import LoadingContextProvider from './contexts/LoadingContext';
+import ClickFileInputContextProvider from './contexts/ClickFileInputContext';
+import ProductContextProvider from './contexts/ProductContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <LoadingContextProvider>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
-  </LoadingContextProvider>
+  <AuthContextProvider>
+    <ProductContextProvider>
+      <ClickFileInputContextProvider>
+        <LoadingContextProvider>
+          <App />
+        </LoadingContextProvider>
+      </ClickFileInputContextProvider>
+    </ProductContextProvider>
+  </AuthContextProvider>
   // </React.StrictMode>
 );
 

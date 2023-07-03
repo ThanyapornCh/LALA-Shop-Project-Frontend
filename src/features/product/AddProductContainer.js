@@ -1,17 +1,36 @@
-import { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import * as adminApi from '../../apis/admin-api';
 import { PlusCircle } from '../../assets/icon';
-// import useProduct from '../../hooks/useProduct';
+import useProduct from '../../hooks/useProduct';
 import Modal from '../../components/Modal';
 import AddProduct from './AddProduct';
 import AddProductList from './AddProductList';
+import useClickFileInput from '../../hooks/useClickFileInput';
 
 export default function AddProductContainer() {
   const [open, setOpen] = useState(false);
-  // const { product, setProduct } = useProduct();
+
+  // const ctx = useProduct();
+
+  const {
+    product,
+    setProduct,
+    newProduct,
+    setNewProduct,
+    newProductImage,
+    setNewProductImage,
+    createProduct,
+    brand,
+    setBrand,
+    handleCreate,
+    onChangeFileInput,
+    handleNewImage,
+    handleCancel,
+    setOptions,
+  } = useProduct();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-8">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
           <div className="overflow-hidden">
@@ -30,38 +49,16 @@ export default function AddProductContainer() {
                   >
                     Products
                   </th>
-                  {/* <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Price
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Quantity
-                  </th> */}
-                  {/* <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Action
-                  </th> */}
                 </tr>
               </thead>
               <tbody>
-                <AddProductList
-                // key={el.id}
-                // product={el}
-                // setProduct={setProduct}
-                />
+                {product.map((el, index) => (
+                  <AddProductList
+                    key={el.id}
+                    product={el}
+                    setProduct={setProduct}
+                  />
+                ))}
               </tbody>
             </table>
             <div className="w-full py-8 flex justify-center items-center">
@@ -75,7 +72,23 @@ export default function AddProductContainer() {
         </div>
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <AddProduct onSuccess={() => setOpen(true)} />
+        <AddProduct
+          onSuccess={() => setOpen(true)}
+          product={product}
+          setProduct={setProduct}
+          newProduct={newProduct}
+          setNewProduct={setNewProduct}
+          newProductImage={newProductImage}
+          setNewProductImage={setNewProductImage}
+          createProduct={createProduct}
+          brand={brand}
+          setBrand={setBrand}
+          onChangeFileInput={onChangeFileInput}
+          handleNewImage={handleNewImage}
+          setClose={handleCancel}
+          handleCreate={handleCreate}
+          setOptions={setOptions}
+        />
       </Modal>
     </div>
   );
