@@ -1,4 +1,4 @@
-import CardList from '../features/product/CradList';
+import CardList from '../features/product/CardList';
 
 export default function Card({ product }) {
   return (
