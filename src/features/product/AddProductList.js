@@ -22,7 +22,7 @@ export default function AddProductList({
           {brand.brandName}
         </p> */}
         <img
-          className="flex justify-center h-full w-full object-cover"
+          className="flex justify-center object-contain h-96 w-72 "
           src={image || Image}
         />
       </td>

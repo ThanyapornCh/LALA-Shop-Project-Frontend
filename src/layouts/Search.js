@@ -1,4 +1,12 @@
+import React, { useState } from 'react';
+import useProduct from '../hooks/useProduct';
+import SearchList from './SearchList';
+
 export default function Search() {
+  const [search, setSearch] = useState('');
+
+  const { product } = useProduct();
+
   return (
     <>
       <label htmlFor="default-search" className="sr-only">
@@ -25,7 +33,22 @@ export default function Search() {
           id="search-input"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Enter your keyword to search"
+          value={search}
+          onChange={e => {
+            setSearch(e.target.value);
+          }}
         />
+        {product
+          .filter(el => {
+            if (search == '') {
+              return el;
+            } else if (el.name.toLowerCase().includes(search.toLowerCase())) {
+              return el;
+            }
+          })
+          .map(el => (
+            <SearchList key={el.id} product={el} />
+          ))}
 
         <button
           type="submit"
