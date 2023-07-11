@@ -8,7 +8,7 @@ export default function HeaderItem() {
       <div className=" flex justify-between my-2 ">
         {/* <Brand /> */}
         <Search />
-        <div className="flex flex-row text-xl w-fit py-2  mx-2 border-2 border-slate-300 hover:border-pink-300 rounded-full relative">
+        <div className="flex flex-row text-xl w-fit h-fit py-2  mx-2 border-2 border-slate-300 hover:border-pink-300 rounded-full relative">
           <div className=" fill-pink-500 mx-3  ">
             <Cart />
           </div>
