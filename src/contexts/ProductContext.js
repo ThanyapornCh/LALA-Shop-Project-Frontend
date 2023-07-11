@@ -97,6 +97,8 @@ export default function ProductContextProvider({ children }) {
     setOpen(false);
   };
 
+  const [search, setSearch] = useState('');
+
   return (
     <ProductContext.Provider
       value={{
@@ -115,6 +117,8 @@ export default function ProductContextProvider({ children }) {
         handleCancel,
         options,
         setOptions,
+        search,
+        setSearch,
       }}
     >
       {children}
