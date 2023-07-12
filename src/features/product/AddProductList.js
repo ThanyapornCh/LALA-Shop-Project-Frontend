@@ -9,6 +9,13 @@ import EditProduct from './EditProduct';
 export default function AddProductList({
   product: { id, image, name, description, price },
   fetchProduct,
+  handleClickEdit,
+  brand,
+  setOptions,
+  handleNewImage,
+  onChangeFileInput,
+  newProduct,
+  newProductImage,
 }) {
   const [open, setOpen] = useState(false);
   // const { brand } = useProduct();
@@ -56,7 +63,16 @@ export default function AddProductList({
               </span>{' '}
             </button>
             <Modal open={open} onClose={() => setOpen(false)}>
-              <EditProduct onSuccess={() => setOpen(true)} />
+              <EditProduct
+                onSuccess={() => setOpen(true)}
+                handleClickEdit={handleClickEdit}
+                brand={brand}
+                setOptions={setOptions}
+                handleNewImage={handleNewImage}
+                onChangeFileInput={onChangeFileInput}
+                newProduct={newProduct}
+                newProductImage={newProductImage}
+              />
             </Modal>
 
             <button

@@ -9,6 +9,8 @@ import useClickFileInput from '../../hooks/useClickFileInput';
 
 export default function AddProductContainer() {
   const [open, setOpen] = useState(false);
+  const [trigger, setTrigger] = useState(false);
+  const [show, setshow] = useState(false);
 
   // const ctx = useProduct();
 
@@ -22,7 +24,7 @@ export default function AddProductContainer() {
     createProduct,
     brand,
     setBrand,
-    handleSubmitForm,
+    handleClickSave,
     onChangeFileInput,
     handleNewImage,
     handleCancel,
@@ -30,6 +32,7 @@ export default function AddProductContainer() {
     error,
     setError,
     fetchProduct,
+    handleClickEdit,
   } = useProduct();
 
   return (
@@ -62,6 +65,14 @@ export default function AddProductContainer() {
                     setProduct={setProduct}
                     index={index}
                     fetchProduct={fetchProduct}
+                    handleClickEdit={handleClickEdit}
+                    brand={brand}
+                    setBrand={setBrand}
+                    setOptions={setOptions}
+                    handleNewImage={handleNewImage}
+                    onChangeFileInput={onChangeFileInput}
+                    newProduct={newProduct}
+                    newProductImage={newProductImage}
                   />
                 ))}
               </tbody>
@@ -91,7 +102,7 @@ export default function AddProductContainer() {
           onChangeFileInput={onChangeFileInput}
           handleNewImage={handleNewImage}
           setClose={handleCancel}
-          handleSubmitForm={handleSubmitForm}
+          handleClickSave={handleClickSave}
           setOptions={setOptions}
           error={error}
           setError={setError}

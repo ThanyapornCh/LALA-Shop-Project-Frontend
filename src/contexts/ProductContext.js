@@ -64,16 +64,17 @@ export default function ProductContextProvider({ children }) {
     setOpen(false);
   };
 
-  const handleSubmitForm = async e => {
+  const handleClickSave = async e => {
     try {
       startLoading();
       e.preventDefault();
       await axios.post('/admin/create', formData);
       stopLoading();
       setNewProduct(newProduct);
-      onClose();
+      setShow(false);
       onSuccess();
       toast.success('Add product to be success');
+      fetchProduct();
     } catch (err) {
       console.log(err);
       toast.error('Add product is not success.');
@@ -119,6 +120,14 @@ export default function ProductContextProvider({ children }) {
   };
 
   const [search, setSearch] = useState('');
+  const [trigger, setTrigger] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClickEdit = async id => {
+    formData.append('id', id);
+    await axios.put(`/admin/update/${id}`, formData);
+    fetchProduct();
+    setShow(false);
+  };
 
   return (
     <ProductContext.Provider
@@ -130,7 +139,7 @@ export default function ProductContextProvider({ children }) {
         newProductImage,
         setNewProductImage,
         onChangeFileInput,
-        handleSubmitForm,
+        handleClickSave,
         fetchProduct,
         // createProduct,
         brand,
@@ -143,6 +152,7 @@ export default function ProductContextProvider({ children }) {
         setSearch,
         error,
         setError,
+        handleClickEdit,
       }}
     >
       {children}

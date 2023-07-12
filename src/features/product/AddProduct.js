@@ -7,21 +7,13 @@ import useProduct from '../../hooks/useProduct';
 export default function AddProduct({
   product,
   newProduct,
-  setProduct,
-  setNewProduct,
   newProductImage,
-  setNewProductImage,
-  createProduct,
-  handleSubmitForm,
+  handleClickSave,
   brand,
-  setBrand,
   onChangeFileInput,
   handleNewImage,
   setClose,
   setOptions,
-  onSuccess,
-  error,
-  setError,
 }) {
   // const { newProduct, setNewProduct, setNewProductImage, createProduct } =
   //   useProduct();
@@ -29,7 +21,7 @@ export default function AddProduct({
   const { file, ref, openFileInput, onCancel } = useClickFileInput();
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form>
       <div className="flex justify-center items-center">
         <div
           onClick={e => e.stopPropagation()}
@@ -117,6 +109,7 @@ export default function AddProduct({
                 <button
                   className="relative rounded-full p-2 bg-gradient-to-br from-green-500 to-sky-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
                   type="submit"
+                  onClick={handleClickSave}
                 >
                   Save
                 </button>
