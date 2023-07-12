@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import * as adminApi from '../../apis/admin-api';
+import axios from '../../config/axios';
 import Image from '../../assets/images/sun_cream.jpg';
 import Modal from '../../components/Modal';
 import EditProduct from './EditProduct';
+
 // import useProduct from '../../hooks/useProduct';
 export default function AddProductList({
   product: { id, image, name, description, price },
+  fetchProduct,
 }) {
   const [open, setOpen] = useState(false);
   // const { brand } = useProduct();
+
+  const handleClickDelete = async id => {
+    await adminApi.deleteProduct(id);
+    fetchProduct();
+  };
 
   return (
     <tr className=" bg-white border-b transition duration-300 py-4 ease-in-out hover:bg-gray-100">
@@ -46,14 +55,15 @@ export default function AddProductList({
                 Edit
               </span>{' '}
             </button>
-
             <Modal open={open} onClose={() => setOpen(false)}>
               <EditProduct onSuccess={() => setOpen(true)} />
             </Modal>
+
             <button
               type="button"
               //   className="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
               className=" inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+              onClick={() => handleClickDelete(id)}
             >
               <span className=" px-4 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Delete

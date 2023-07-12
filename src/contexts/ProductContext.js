@@ -1,7 +1,9 @@
 import React, { useState, createContext, useEffect, useRef } from 'react';
 import * as adminApi from '../apis/admin-api';
 import axios from '../config/axios';
-// import useLoading from '../hooks/useLoading';
+import { toast } from 'react-toastify';
+import useClickFileInput from '../hooks/useClickFileInput';
+import useLoading from '../hooks/useLoading';
 
 export const ProductContext = createContext();
 
@@ -41,9 +43,9 @@ export default function ProductContextProvider({ children }) {
   formData.append('name', newProduct.name);
   formData.append('price', newProduct.price);
   formData.append('description', newProduct.description);
+
   console.log(formData);
 
-  // const { startLoading, stopLoading } = useLoading();
   const createProduct = newProduct => {
     setProduct([newProduct, ...product]);
   };
@@ -52,13 +54,32 @@ export default function ProductContextProvider({ children }) {
   // const handleOnChange = () => {
   //   console.log('first');
   // };
-  const handleCreate = async () => {
-    await axios.post('/admin/create', formData);
+  const [error, setError] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
+  const { onCancel } = useClickFileInput();
+  const onClose = () => {
+    setOpen(false);
+  };
+  const onSuccess = () => {
+    setOpen(false);
+  };
 
-    // setNewProductImage({
-    //   image: null,
-    // });
-    // onSuccess();
+  const handleSubmitForm = async e => {
+    try {
+      startLoading();
+      e.preventDefault();
+      await axios.post('/admin/create', formData);
+      stopLoading();
+      setNewProduct(newProduct);
+      onClose();
+      onSuccess();
+      toast.success('Add product to be success');
+    } catch (err) {
+      console.log(err);
+      toast.error('Add product is not success.');
+    } finally {
+      stopLoading();
+    }
   };
 
   const handleNewImage = e => {
@@ -109,7 +130,8 @@ export default function ProductContextProvider({ children }) {
         newProductImage,
         setNewProductImage,
         onChangeFileInput,
-        handleCreate,
+        handleSubmitForm,
+        fetchProduct,
         // createProduct,
         brand,
         setBrand,
@@ -119,6 +141,8 @@ export default function ProductContextProvider({ children }) {
         setOptions,
         search,
         setSearch,
+        error,
+        setError,
       }}
     >
       {children}

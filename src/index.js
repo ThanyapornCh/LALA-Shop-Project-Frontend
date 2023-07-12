@@ -14,13 +14,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <AuthContextProvider>
-    <ProductContextProvider>
-      <ClickFileInputContextProvider>
-        <LoadingContextProvider>
+    <ClickFileInputContextProvider>
+      <LoadingContextProvider>
+        <ProductContextProvider>
           <App />
-        </LoadingContextProvider>
-      </ClickFileInputContextProvider>
-    </ProductContextProvider>
+        </ProductContextProvider>
+      </LoadingContextProvider>
+    </ClickFileInputContextProvider>
   </AuthContextProvider>
   // </React.StrictMode>
 );

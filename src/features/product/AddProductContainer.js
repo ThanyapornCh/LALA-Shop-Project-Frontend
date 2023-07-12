@@ -22,11 +22,14 @@ export default function AddProductContainer() {
     createProduct,
     brand,
     setBrand,
-    handleCreate,
+    handleSubmitForm,
     onChangeFileInput,
     handleNewImage,
     handleCancel,
     setOptions,
+    error,
+    setError,
+    fetchProduct,
   } = useProduct();
 
   return (
@@ -57,6 +60,8 @@ export default function AddProductContainer() {
                     key={el.id}
                     product={el}
                     setProduct={setProduct}
+                    index={index}
+                    fetchProduct={fetchProduct}
                   />
                 ))}
               </tbody>
@@ -86,8 +91,10 @@ export default function AddProductContainer() {
           onChangeFileInput={onChangeFileInput}
           handleNewImage={handleNewImage}
           setClose={handleCancel}
-          handleCreate={handleCreate}
+          handleSubmitForm={handleSubmitForm}
           setOptions={setOptions}
+          error={error}
+          setError={setError}
         />
       </Modal>
     </div>
