@@ -9,6 +9,7 @@ import AuthContextProvider from './contexts/AuthContext';
 import LoadingContextProvider from './contexts/LoadingContext';
 import ClickFileInputContextProvider from './contexts/ClickFileInputContext';
 import ProductContextProvider from './contexts/ProductContext';
+import OrderContextProvider from './contexts/OrderContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +17,11 @@ root.render(
   <AuthContextProvider>
     <ClickFileInputContextProvider>
       <LoadingContextProvider>
-        <ProductContextProvider>
-          <App />
-        </ProductContextProvider>
+        <OrderContextProvider>
+          <ProductContextProvider>
+            <App />
+          </ProductContextProvider>
+        </OrderContextProvider>
       </LoadingContextProvider>
     </ClickFileInputContextProvider>
   </AuthContextProvider>

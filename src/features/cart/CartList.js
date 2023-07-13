@@ -1,27 +1,33 @@
 import { Trash } from '../../assets/icon';
 import Counter from '../../components/Counter';
-import image from '../../assets/images/sun_cream.jpg';
+// import image from '../../assets/images/sun_cream.jpg';
 import DeleteCartAction from './DeleteCartAction';
 import { useState } from 'react';
 
-export default function CartList() {
+export default function CartList({
+  order,
+  handleUpdateCart,
+  handleDeleteCart,
+}) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         <img
           className="flex justify-center object-cover"
-          src={image}
+          src={order.Product.image}
           width="60px"
         />
       </td>
       <td className=" whitespace-nowrap">
         <div className="flex flex-col p-2.5">
-          <h1 className=" text-lg font-semibold text-slate-900 m-2">Cream </h1>
+          <h1 className=" text-lg font-semibold text-slate-900 m-2">
+            {order.Product.name}{' '}
+          </h1>
           <p className="text-sm font-light text-slate-900 m-2">
-            Price: 200 Bath
+            Price: THB {order.Product.price}
           </p>
-          <Counter />
+          <Counter order={order} handleUpdateCart={handleUpdateCart} />
           <div className="flex justify-end">
             <button
               type="button"
@@ -36,6 +42,7 @@ export default function CartList() {
               open={open}
               onClose={() => setOpen(false)}
               onSuccess={() => setOpen(true)}
+              handleDeleteCart={handleDeleteCart}
             />
           </div>
         </div>

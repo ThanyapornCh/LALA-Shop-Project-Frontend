@@ -1,4 +1,4 @@
-export default function DeleteCartForm() {
+export default function DeleteCartForm({ handleDeleteCart }) {
   return (
     <>
       <div className="flex flex-col whitespace-pre-wrap ">

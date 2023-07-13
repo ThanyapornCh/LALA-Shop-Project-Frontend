@@ -1,6 +1,9 @@
 import CartList from './CartList';
+import TotalPrice from './TotalPrice';
+import useOrder from '../../hooks/useOrder';
 
 export default function CartContainer() {
+  const { order, handleUpdateCart, handleDeleteCart } = useOrder();
   return (
     <>
       <div className="flex flex-col">
@@ -49,28 +52,25 @@ export default function CartContainer() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      1
-                    </td>
-                    <CartList />
-                  </tr>
+                  {order.map((el, idx) => (
+                    <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {idx + 1}
+                      </td>
+                      <CartList
+                        key={el.id}
+                        order={el}
+                        handleUpdateCart={handleUpdateCart}
+                        handleDeleteCart={handleDeleteCart}
+                      />
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <div className="flex justify-end p-4 ">
                 <div className="block p-6 rounded-lg w-full border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 bg-white max-w-xl">
                   <div className="col-1 text-right">
-                    <h5 className=" text-gray-900 text-xl leading-tight font-medium mb-2">
-                      Total
-                    </h5>
-                    <p> THB 1500 </p>
-
-                    <button
-                      type="button"
-                      className=" rounded-full py-2 px-3 m-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
-                    >
-                      Buy Now
-                    </button>
+                    <TotalPrice />
                   </div>
                 </div>
               </div>

@@ -9,7 +9,7 @@ export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
   const [product, setProduct] = useState([]);
-  console.log(product);
+  // console.log(product);
 
   const fetchProduct = async () => {
     const res = await adminApi.getAllProduct();
@@ -89,7 +89,7 @@ export default function ProductContextProvider({ children }) {
 
   const [brand, setBrand] = useState([]);
   const [options, setOptions] = useState();
-  console.log(options);
+  // console.log(options);
 
   useEffect(() => {
     const fetchBrand = async () => {
@@ -98,7 +98,7 @@ export default function ProductContextProvider({ children }) {
     };
     fetchBrand();
   }, []);
-  console.log(brand);
+  // console.log(brand);
 
   const [open, setOpen] = useState(false);
   // const ref = useRef();
