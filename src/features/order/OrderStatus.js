@@ -1,6 +1,8 @@
+import useOrder from '../../hooks/useOrder';
 import OrderStatusList from './OrderStatusList';
 
 export default function OrderStatus() {
+  // const {  order } = useOrder();
   return (
     <>
       <table className="min-w-full">
@@ -33,6 +35,7 @@ export default function OrderStatus() {
             </th>
           </tr>
         </thead>
+
         <OrderStatusList />
       </table>
     </>

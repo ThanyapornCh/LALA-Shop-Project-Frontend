@@ -1,4 +1,4 @@
-export default function DeleteCartForm({ handleDeleteCart }) {
+export default function DeleteCartForm({ handleClickDelete }) {
   return (
     <>
       <div className="flex flex-col whitespace-pre-wrap ">
@@ -9,6 +9,7 @@ export default function DeleteCartForm({ handleDeleteCart }) {
           <button
             className=" rounded-md p-2 m-2 bg-gradient-to-br from-red-600 to-red-500 text-white bold-1 shadow-xl font-medium drop-shadow-xl"
             type="button"
+            onClick={handleClickDelete}
           >
             Delete
           </button>

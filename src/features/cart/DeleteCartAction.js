@@ -5,14 +5,14 @@ export default function DeleteCartAction({
   open,
   onClose,
   onSuccess,
-  handleDeleteCart,
+  handleClickDelete,
 }) {
   return (
     <>
       <Modal open={open} onClose={onClose}>
         <DeleteCartForm
           onSuccess={onSuccess}
-          handleDeleteCart={handleDeleteCart}
+          handleClickDelete={handleClickDelete}
         />
       </Modal>
     </>

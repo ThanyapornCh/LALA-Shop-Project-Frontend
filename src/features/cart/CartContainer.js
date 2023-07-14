@@ -3,7 +3,8 @@ import TotalPrice from './TotalPrice';
 import useOrder from '../../hooks/useOrder';
 
 export default function CartContainer() {
-  const { order, handleUpdateCart, handleDeleteCart } = useOrder();
+  const { order, handleUpdateCart, handleDeleteCart, fetchOrder } = useOrder();
+
   return (
     <>
       <div className="flex flex-col">
@@ -62,6 +63,7 @@ export default function CartContainer() {
                         order={el}
                         handleUpdateCart={handleUpdateCart}
                         handleDeleteCart={handleDeleteCart}
+                        fetchOrder={fetchOrder}
                       />
                     </tr>
                   ))}
@@ -70,7 +72,7 @@ export default function CartContainer() {
               <div className="flex justify-end p-4 ">
                 <div className="block p-6 rounded-lg w-full border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 bg-white max-w-xl">
                   <div className="col-1 text-right">
-                    <TotalPrice />
+                    <TotalPrice order={order} />
                   </div>
                 </div>
               </div>

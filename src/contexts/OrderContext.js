@@ -7,12 +7,12 @@ export const OrderContext = createContext();
 export default function OrderContextProvider({ children }) {
   const [order, setOrder] = useState([]);
 
+  const fetchOrder = async () => {
+    const res = await orderApi.getOrder();
+    setOrder(res.data.orders.OrderItems);
+    console.log(res.data.orders.OrderItems);
+  };
   useEffect(() => {
-    const fetchOrder = async () => {
-      const res = await orderApi.getOrder();
-      setOrder(res.data.orders.OrderItems);
-      console.log(res.data.orders.OrderItems);
-    };
     fetchOrder();
   }, []);
 
@@ -40,6 +40,7 @@ export default function OrderContextProvider({ children }) {
         handleAddCart,
         handleUpdateCart,
         handleDeleteCart,
+        fetchOrder,
       }}
     >
       {children}
