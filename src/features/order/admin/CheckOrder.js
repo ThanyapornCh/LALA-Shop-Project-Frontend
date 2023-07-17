@@ -1,6 +1,8 @@
 import CheckOrderList from './CheckOrderList';
+import useOrder from '../../../hooks/useOrder';
 
 export default function CheckOrder() {
+  const { checkOrder } = useOrder();
   return (
     <table className="min-w-full">
       <thead className="bg-white border-b">
@@ -31,7 +33,9 @@ export default function CheckOrder() {
           </th>
         </tr>
       </thead>
-      <CheckOrderList />
+      {checkOrder.map((el, index) => (
+        <CheckOrderList key={el.id} checkOrder={el} idx={index} />
+      ))}
     </table>
   );
 }

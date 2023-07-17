@@ -8,3 +8,4 @@ export const deleteProduct = productId =>
 
 export const getAllProduct = () => axios.get('/admin/product');
 export const getAllBrand = () => axios.get('/admin/product/brand');
+export const getCheckOrder = () => axios.get('/admin/orders');
