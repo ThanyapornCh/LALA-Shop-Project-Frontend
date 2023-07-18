@@ -7,3 +7,4 @@ export const deleteOrder = (orderId, productId) =>
   axios.delete(`/order/${orderId}/product/${productId}`);
 
 export const getOrder = () => axios.get('/order');
+export const getOrderStatus = () => axios.get('/order/orderstatus');

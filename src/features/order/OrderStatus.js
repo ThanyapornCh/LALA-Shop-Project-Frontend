@@ -2,7 +2,9 @@ import useOrder from '../../hooks/useOrder';
 import OrderStatusList from './OrderStatusList';
 
 export default function OrderStatus() {
-  // const {  order } = useOrder();
+  const { order } = useOrder();
+  console.log(order);
+
   return (
     <>
       <table className="min-w-full">
@@ -36,7 +38,9 @@ export default function OrderStatus() {
           </tr>
         </thead>
 
-        <OrderStatusList />
+        {order.map((el, index) => (
+          <OrderStatusList key={el.id} order={el} idx={index} />
+        ))}
       </table>
     </>
   );

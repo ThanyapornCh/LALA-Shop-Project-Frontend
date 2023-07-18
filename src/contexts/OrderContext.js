@@ -10,8 +10,8 @@ export default function OrderContextProvider({ children }) {
 
   const fetchOrder = async () => {
     const res = await orderApi.getOrder();
-    setOrder(res.data.orders.OrderItems);
-    console.log(res.data.orders.OrderItems);
+    setOrder(res.data?.orders.OrderItems);
+    console.log(res.data?.orders.OrderItems);
   };
   useEffect(() => {
     fetchOrder();
@@ -21,6 +21,7 @@ export default function OrderContextProvider({ children }) {
     const res = await axios.post(`/order/${productId}`);
     const newOrder = res.data.OrderItems;
     setOrder(newOrder);
+    console.log(newOrder);
   };
 
   const handleUpdateCart = async (orderItemId, input) => {
@@ -37,12 +38,36 @@ export default function OrderContextProvider({ children }) {
 
   useEffect(() => {
     const fetchCheckOrder = async () => {
-      const res = await adminApi.getCheckOrder();
-      setCheckOrder(res.data.checkOrder);
-      console.log(res.data.checkOrder);
+      const result = await adminApi.getCheckOrder();
+      setCheckOrder(result.data.checkOrder);
+      console.log(result.data.checkOrder);
     };
     fetchCheckOrder();
   }, []);
+
+  // const [status, setStatus] = useState([]);
+  // console.log(status);
+
+  // const fetchStatus = async () => {
+  //   const res = await orderApi.getOrderStatus();
+  //   setStatus(res.data);
+  //   console.log(res.data);
+  // };
+  // useEffect(() => {
+  //   fetchStatus();
+  // }, []);
+
+  // const [orderItem, setOrderItem] = useState([]);
+  // console.log(orderItem);
+
+  // const fetchOrderItem = async () => {
+  //   const res = await orderApi.getOrder();
+  //   setOrderItem(res.data.orders);
+  //   console.log(res.data.orders);
+  // };
+  // useEffect(() => {
+  //   fetchOrderItem();
+  // }, []);
 
   return (
     <OrderContext.Provider
@@ -55,6 +80,8 @@ export default function OrderContextProvider({ children }) {
         fetchOrder,
         checkOrder,
         setCheckOrder,
+        // status,
+        // orderItem,
       }}
     >
       {children}
