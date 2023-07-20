@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { QrCode } from '../../assets/icon';
+import React, { useState } from 'react';
 import Modal from '../../components/Modal';
+import { QrCode } from '../../assets/icon';
 import PaymentForm from './PaymentForm';
 
 export default function PaymentAction() {

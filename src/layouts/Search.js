@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
 import useProduct from '../hooks/useProduct';
-import SearchList from './SearchList';
-import { CloseIcon, SearchIcon } from '../assets/icon';
+import { SearchIcon } from '../assets/icon';
 
 export default function Search() {
-  const [open, setOpen] = useState(false);
-  const { product, search, setSearch } = useProduct();
+  const { search, setSearch } = useProduct();
 
   const handleFilter = e => {
     const newFilter = e.target.value.toLowerCase();
@@ -28,16 +25,7 @@ export default function Search() {
           placeholder="Enter your keyword to search"
           value={search}
           onChange={handleFilter}
-          // onClick={() => setOpen(true)}
         />
-
-        {/* {search && (
-          <SearchList
-            open={open}
-            onClose={() => setOpen(false)}
-            product={product}
-          />
-        )} */}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Edit } from '../../../assets/icon';
 import Modal from '../../../components/Modal';
 import CoverAdminImageForm from './CoverAdminImageForm';

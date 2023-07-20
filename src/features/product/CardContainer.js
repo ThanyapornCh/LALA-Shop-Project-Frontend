@@ -1,5 +1,6 @@
-import Card from '../../components/Card';
 import useProduct from '../../hooks/useProduct';
+import Card from '../../components/Card';
+
 export default function CardContainer() {
   const { product, search } = useProduct();
   return (

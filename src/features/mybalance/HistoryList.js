@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { timeSince } from '../../utils/date-format';
 import SlipPayment from './SlipPayment';
 import Modal from '../../components/Modal';
@@ -11,7 +11,7 @@ export default function HistoryList({
     <>
       {orderStatus === 'paid' ? (
         <button
-          className=" w-full    border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 hover:border-indigo-300  border-2  rounded-lg my-2"
+          className="w-full border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 hover:border-indigo-300  border-2  rounded-lg my-2"
           onClick={() => setOpen(true)}
         >
           <span className="flex flex-wrap items-center text-gray-600 font-medium text-base p-2 ">

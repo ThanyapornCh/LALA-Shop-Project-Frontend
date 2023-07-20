@@ -1,16 +1,32 @@
 import Input from '../../components/Input';
+import { useLocation } from 'react-router-dom';
 import useClickFileInput from '../../hooks/useClickFileInput';
+import * as adminApi from '../../apis/admin-api';
 
 export default function EditProduct({
+  id,
   handleClickEdit,
   handleNewImage,
   newProduct,
   newProductImage,
   onChangeFileInput,
+  handleChangeFileInput,
   brand,
   setOptions,
+  setNewProduct,
+  onSuccess,
 }) {
   const { ref } = useClickFileInput();
+
+  const handleClick = async e => {
+    e.preventDefault();
+    try {
+      await handleClickEdit(id);
+      onSuccess();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="flex justify-center items-center">
       <form>
@@ -27,7 +43,7 @@ export default function EditProduct({
               >
                 {/* <option value="selected">Choose a brand</option> */}
                 {brand.map(el => (
-                  <option value={el.id}>{el.brandName}</option>
+                  <option key={el.id}>{el.brandName}</option>
                 ))}
               </select>
             </label>
@@ -53,7 +69,7 @@ export default function EditProduct({
                 placeholder="Enter name"
                 name="name"
                 value={newProduct.name}
-                onChange={onChangeFileInput}
+                onChange={handleChangeFileInput}
               />
             </label>
             <label className="block">
@@ -66,7 +82,7 @@ export default function EditProduct({
                 placeholder="Enter description"
                 name="description"
                 value={newProduct.description}
-                onChange={onChangeFileInput}
+                onChange={handleChangeFileInput}
               />
             </label>
             <label className="block">
@@ -79,7 +95,7 @@ export default function EditProduct({
                 placeholder="Enter price"
                 name="price"
                 value={newProduct.price}
-                onChange={onChangeFileInput}
+                onChange={handleChangeFileInput}
               />
             </label>
             <label className="block ">
@@ -92,14 +108,14 @@ export default function EditProduct({
                 placeholder="Enter quantity"
                 name="quantity"
                 value={newProduct.quantity}
-                onChange={onChangeFileInput}
+                onChange={handleChangeFileInput}
               />
             </label>
             <div className="grid grid-cols-2 gap-4 place-content-end">
               <button
                 className=" rounded-full p-2  bg-gradient-to-br from-purple-600 to-pink-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
                 type="submit"
-                onClick={handleClickEdit}
+                onClick={handleClick}
               >
                 Update
               </button>

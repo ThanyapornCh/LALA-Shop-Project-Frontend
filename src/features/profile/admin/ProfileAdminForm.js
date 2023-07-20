@@ -31,7 +31,7 @@ export default function ProfileAdminForm() {
             </Link>
           </div>
           <div className="flex justify-center  items-center my-2">
-            <Link to="/addproduct">
+            <Link to="/product">
               <button
                 className="font-bold rounded-3xl px-10 py-2 text-white bg-sky-500
                 hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "

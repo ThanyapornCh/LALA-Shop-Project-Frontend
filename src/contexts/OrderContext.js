@@ -7,14 +7,24 @@ export const OrderContext = createContext();
 
 export default function OrderContextProvider({ children }) {
   const [order, setOrder] = useState([]);
+  const [checkOrder, setCheckOrder] = useState([]);
 
   const fetchOrder = async () => {
     const res = await orderApi.getOrder();
-    setOrder(res.data?.orders.OrderItems);
-    console.log(res.data?.orders.OrderItems);
+    setOrder(res.data.orders.OrderItems);
+    console.log(res.data.orders.OrderItems);
   };
   useEffect(() => {
     fetchOrder();
+  }, []);
+
+  useEffect(() => {
+    const fetchCheckOrder = async () => {
+      const result = await adminApi.getCheckOrder();
+      setCheckOrder(result.data.checkOrder);
+      console.log(result.data.checkOrder);
+    };
+    fetchCheckOrder();
   }, []);
 
   const handleAddCart = async productId => {
@@ -34,54 +44,17 @@ export default function OrderContextProvider({ children }) {
     fetchOrder();
   };
 
-  const [checkOrder, setCheckOrder] = useState([]);
-
-  useEffect(() => {
-    const fetchCheckOrder = async () => {
-      const result = await adminApi.getCheckOrder();
-      setCheckOrder(result.data.checkOrder);
-      console.log(result.data.checkOrder);
-    };
-    fetchCheckOrder();
-  }, []);
-
-  // const [status, setStatus] = useState([]);
-  // console.log(status);
-
-  // const fetchStatus = async () => {
-  //   const res = await orderApi.getOrderStatus();
-  //   setStatus(res.data);
-  //   console.log(res.data);
-  // };
-  // useEffect(() => {
-  //   fetchStatus();
-  // }, []);
-
-  // const [orderItem, setOrderItem] = useState([]);
-  // console.log(orderItem);
-
-  // const fetchOrderItem = async () => {
-  //   const res = await orderApi.getOrder();
-  //   setOrderItem(res.data.orders);
-  //   console.log(res.data.orders);
-  // };
-  // useEffect(() => {
-  //   fetchOrderItem();
-  // }, []);
-
   return (
     <OrderContext.Provider
       value={{
         order,
         setOrder,
+        fetchOrder,
         handleAddCart,
         handleUpdateCart,
         handleDeleteCart,
-        fetchOrder,
         checkOrder,
         setCheckOrder,
-        // status,
-        // orderItem,
       }}
     >
       {children}

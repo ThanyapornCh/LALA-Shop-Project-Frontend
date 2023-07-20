@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         element: <ProfileAdminPage />,
       },
       {
-        path: '/addproduct',
+        path: '/product',
         element: <AddProductPage />,
       },
       {

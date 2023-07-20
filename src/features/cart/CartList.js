@@ -1,16 +1,11 @@
 import { Trash } from '../../assets/icon';
 import Counter from '../../components/Counter';
-import { useState } from 'react';
-// import image from '../../assets/images/sun_cream.jpg';
-// import DeleteCartAction from './DeleteCartAction';
 
 export default function CartList({
   order,
   handleUpdateCart,
   handleDeleteCart,
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

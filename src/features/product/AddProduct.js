@@ -1,11 +1,7 @@
 import useClickFileInput from '../../hooks/useClickFileInput';
 
-import * as adminApi from '../../apis/admin-api';
-import { createContext } from 'react';
-import useProduct from '../../hooks/useProduct';
-
 export default function AddProduct({
-  product,
+  onSuccess,
   newProduct,
   newProductImage,
   handleClickSave,
@@ -15,14 +11,21 @@ export default function AddProduct({
   setClose,
   setOptions,
 }) {
-  // const { newProduct, setNewProduct, setNewProductImage, createProduct } =
-  //   useProduct();
+  const { ref } = useClickFileInput();
 
-  const { file, ref, openFileInput, onCancel } = useClickFileInput();
+  const handleClick = async e => {
+    e.preventDefault();
+    try {
+      await handleClickSave();
+      onSuccess();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    <form>
-      <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center">
+      <form>
         <div
           onClick={e => e.stopPropagation()}
           className=" p-1 rounded-lg bg-white max-w-xl"
@@ -34,9 +37,8 @@ export default function AddProduct({
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 onChange={e => setOptions(e.target.value)}
               >
-                {/* <option>Choose a brand</option> */}
                 {brand.map(el => (
-                  <option value={el.id}>{el.brandName}</option>
+                  <option key={el.id}>{el.brandName}</option>
                 ))}
               </select>
             </label>
@@ -109,7 +111,7 @@ export default function AddProduct({
                 <button
                   className="relative rounded-full p-2 bg-gradient-to-br from-green-500 to-sky-500 text-white bold-2 shadow-xl font-medium drop-shadow-xl"
                   type="submit"
-                  onClick={handleClickSave}
+                  onClick={handleClick}
                 >
                   Save
                 </button>
@@ -125,7 +127,7 @@ export default function AddProduct({
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

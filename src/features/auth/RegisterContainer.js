@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import RegisterForm from './RegisterForm';
 import Modal from '../../components/Modal';
 

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../../../hooks/useAuth';
+
 export default function LoginAdminForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,8 +49,7 @@ export default function LoginAdminForm() {
       <br />
       <div>
         <button
-          className="w-full rounded-3xl px-10 py-2 bg-pink-600 text-white 
-    hover:bg-gradient-to-r from-green-400 to-blue-500 hover:drop-shadow-md duration-300 ease-in"
+          className="w-full rounded-3xl px-10 py-2 bg-pink-600 text-white  hover:bg-gradient-to-r from-green-400 to-blue-500 hover:drop-shadow-md duration-300 ease-in"
           type="submit"
         >
           Sign In

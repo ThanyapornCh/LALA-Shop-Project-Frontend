@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import useLoading from '../../hooks/useLoading';
 import Input from '../../components/Input';
 import validateRegister from '../../validators/validate-register';
 import * as authApi from '../../apis/auth-api';
-import useLoading from '../../hooks/useLoading';
 
 const initialInput = {
   firstName: '',

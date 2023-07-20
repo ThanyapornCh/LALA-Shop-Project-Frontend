@@ -1,6 +1,6 @@
+import useOrder from '../../hooks/useOrder';
 import CartList from './CartList';
 import TotalPrice from './TotalPrice';
-import useOrder from '../../hooks/useOrder';
 
 export default function CartContainer() {
   const { order, handleUpdateCart, handleDeleteCart, fetchOrder } = useOrder();
@@ -26,30 +26,6 @@ export default function CartContainer() {
                     >
                       Products
                     </th>
-                    {/* <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Price
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Quantity
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Action
-                    </th> */}
                   </tr>
                 </thead>
                 <tbody>

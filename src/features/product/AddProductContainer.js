@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import * as adminApi from '../../apis/admin-api';
-import { PlusCircle } from '../../assets/icon';
+import React, { useState } from 'react';
 import useProduct from '../../hooks/useProduct';
 import Modal from '../../components/Modal';
+import { PlusCircle } from '../../assets/icon';
 import AddProduct from './AddProduct';
 import AddProductList from './AddProductList';
-import useClickFileInput from '../../hooks/useClickFileInput';
 
 export default function AddProductContainer() {
   const [open, setOpen] = useState(false);
-  const [trigger, setTrigger] = useState(false);
-  const [show, setshow] = useState(false);
-
-  // const ctx = useProduct();
 
   const {
     product,
@@ -21,18 +15,16 @@ export default function AddProductContainer() {
     setNewProduct,
     newProductImage,
     setNewProductImage,
-    createProduct,
     brand,
     setBrand,
+    setOptions,
+    fetchProduct,
     handleClickSave,
     onChangeFileInput,
     handleNewImage,
     handleCancel,
-    setOptions,
-    error,
-    setError,
-    fetchProduct,
     handleClickEdit,
+    handleChangeFileInput,
   } = useProduct();
 
   return (
@@ -73,6 +65,7 @@ export default function AddProductContainer() {
                     onChangeFileInput={onChangeFileInput}
                     newProduct={newProduct}
                     newProductImage={newProductImage}
+                    handleChangeFileInput={handleChangeFileInput}
                   />
                 ))}
               </tbody>
@@ -89,14 +82,11 @@ export default function AddProductContainer() {
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <AddProduct
-          onSuccess={() => setOpen(true)}
-          product={product}
-          setProduct={setProduct}
+          onSuccess={() => setOpen(false)}
           newProduct={newProduct}
           setNewProduct={setNewProduct}
           newProductImage={newProductImage}
           setNewProductImage={setNewProductImage}
-          createProduct={createProduct}
           brand={brand}
           setBrand={setBrand}
           onChangeFileInput={onChangeFileInput}
@@ -104,8 +94,6 @@ export default function AddProductContainer() {
           setClose={handleCancel}
           handleClickSave={handleClickSave}
           setOptions={setOptions}
-          error={error}
-          setError={setError}
         />
       </Modal>
     </div>

@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
-import CoverImage from '../../components/CoverImage';
+import React, { useRef, useState } from 'react';
+import * as userApi from '../../apis/user-api';
 import useAuth from '../../hooks/useAuth';
 import useLoading from '../../hooks/useLoading';
-import * as userApi from '../../apis/user-api';
+import CoverImage from '../../components/CoverImage';
 
 export default function CoverImageForm({ onSuccess, updateProfileUser }) {
   const { authenticatedUser, updateProfile } = useAuth();

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { STATUS_ADMIN } from '../../../config/constant';
 import useAuth from '../../../hooks/useAuth';
 import ProfileAdminCover from './ProfileAdminCover';

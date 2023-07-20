@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import * as userApi from '../../apis/user-api';
 import useAuth from '../../hooks/useAuth';
 import useLoading from '../../hooks/useLoading';
 import Avatar from '../../components/Avatar';
-import * as userApi from '../../apis/user-api';
 
 export default function ProfileImageForm({ onSuccess, updateProfileUser }) {
   const { authenticatedUser, updateProfile } = useAuth();

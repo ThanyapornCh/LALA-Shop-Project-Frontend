@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import * as authApi from '../apis/auth-api';
 
@@ -27,7 +27,6 @@ export default function AuthContextProvider({ children }) {
       fetchAuthUser();
     }
   }, []);
-  // console.log(authenticatedUser.status);
 
   const login = async (email, password) => {
     const res = await authApi.login({ email, password });

@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-export default function SearchList({ input, product, open, onClose }) {
+export default function SearchList({ product, open }) {
   const handleClickSearch = e => {
     e.preventDefault();
     alert(`You selected ${product}!`);
