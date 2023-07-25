@@ -21,7 +21,7 @@ export default function ProfileForm() {
             </h2>
           </div>
           <div className="flex justify-center items-center my-2">
-            <Link to="/myaccount">
+            <Link to="/user/myaccount">
               <button
                 className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-blue-500
               hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "
@@ -32,7 +32,7 @@ export default function ProfileForm() {
             </Link>
           </div>
           <div className="flex justify-center  items-center my-2">
-            <Link to="/orderstatus">
+            <Link to="/user/orderstatus">
               <button
                 className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-sky-500
               hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "

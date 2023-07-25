@@ -36,23 +36,23 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <HomePage /> },
       {
-        path: '/cart',
+        path: '/user/cart',
         element: <CartPage />,
       },
       {
-        path: '/orderstatus',
+        path: '/user/orderstatus',
         element: <OrderStatusPage />,
       },
       {
-        path: '/payment',
+        path: '/user/payment',
         element: <PaymentPage />,
       },
       {
-        path: '/myaccount',
+        path: '/user/myaccount',
         element: <AccountPage />,
       },
       {
-        path: '/profileuser', ///profileuser/:userId
+        path: '/user/profile',
         element: <ProfileUserPage />,
       },
     ],
@@ -75,19 +75,19 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/profileadmin',
+        path: '/admin/profile',
         element: <ProfileAdminPage />,
       },
       {
-        path: '/product',
+        path: '/admin/product',
         element: <AddProductPage />,
       },
       {
-        path: '/checkorder',
+        path: '/admin/checkorder',
         element: <CheckOrderPage />,
       },
       {
-        path: '/mybalance',
+        path: '/admin/mybalance',
         element: <MyBalancePage />,
       },
     ],

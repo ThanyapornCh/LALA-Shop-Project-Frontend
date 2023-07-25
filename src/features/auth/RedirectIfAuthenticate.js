@@ -7,7 +7,7 @@ export default function RedirectIfAuthenticate({ children }) {
   if (authenticatedUser && authenticatedUser.status === 'user') {
     return <Navigate to={'/'} />;
   } else if (authenticatedUser && authenticatedUser.status === 'admin') {
-    return <Navigate to={'/profileadmin'} />;
+    return <Navigate to={'/admin/profile'} />;
   }
   return children;
 }

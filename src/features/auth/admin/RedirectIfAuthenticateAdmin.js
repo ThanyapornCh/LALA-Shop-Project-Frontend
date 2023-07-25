@@ -6,7 +6,7 @@ export default function RedirectIfAuthenticateAdmin({ children }) {
   const { authenticatedUser } = useAuth();
 
   if (authenticatedUser === STATUS_ADMIN) {
-    return <Navigate to={'/profieadmin'} />;
+    return <Navigate to={'/admin/profie'} />;
   }
 
   return children;

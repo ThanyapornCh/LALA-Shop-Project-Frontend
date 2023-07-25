@@ -12,21 +12,21 @@ export default function FooterItem() {
         </button>
       </Link>
 
-      <Link to="/cart">
+      <Link to="/user/cart">
         <button className="flex-col m-2 p-2 text-3xl ">
           <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
             <BagShop />
           </div>
         </button>
       </Link>
-      <Link to="/payment">
+      <Link to="/user/payment">
         <button className="flex-col m-2 p-2 text-3xl ">
           <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
             <Cash />
           </div>
         </button>
       </Link>
-      <Link to="/profileuser">
+      <Link to="/user/profile">
         <button className="flex-col m-2 p-2 text-3xl ">
           <div className="w-[30px] h-[30px] fill-pink-500 mx-3">
             <User />

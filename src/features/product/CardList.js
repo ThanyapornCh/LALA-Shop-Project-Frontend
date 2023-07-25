@@ -12,7 +12,7 @@ export default function CardList({
   const handleClickAdd = () => {
     handleAddCart(id);
     setAddCart(true);
-    navigate('/cart');
+    navigate('/user/cart');
   };
   return (
     <>

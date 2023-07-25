@@ -3,7 +3,7 @@ import LalaShopLogo from '../../icons';
 
 export default function Brand() {
   return (
-    <Link to="/profileadmin">
+    <Link to="/admin/profile">
       <LalaShopLogo />
     </Link>
   );
