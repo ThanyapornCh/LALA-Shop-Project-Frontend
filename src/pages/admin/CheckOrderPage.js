@@ -1,5 +1,5 @@
-import CheckorderContainer from '../../features/order/admin/CheckOrderContiner';
+import CheckOrderContainer from '../../features/order/admin/CheckOrderContainer';
 
 export default function CheckOrderPage() {
-  return <CheckorderContainer />;
+  return <CheckOrderContainer />;
 }
