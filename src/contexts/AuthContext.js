@@ -14,7 +14,7 @@ export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthenticatedUser] = useState(
     getAccessToken() ? true : null
   );
-  console.log(authenticatedUser);
+  // console.log(authenticatedUser);
   useEffect(() => {
     const fetchAuthUser = async () => {
       try {

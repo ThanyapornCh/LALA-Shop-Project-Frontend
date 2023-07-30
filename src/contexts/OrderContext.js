@@ -12,7 +12,7 @@ export default function OrderContextProvider({ children }) {
   const fetchOrder = async () => {
     const res = await orderApi.getOrder();
     setOrder(res.data.orders.OrderItems);
-    console.log(res.data.orders.OrderItems);
+    // console.log(res.data.orders.OrderItems);
   };
   useEffect(() => {
     fetchOrder();
@@ -22,7 +22,7 @@ export default function OrderContextProvider({ children }) {
     const fetchCheckOrder = async () => {
       const result = await adminApi.getCheckOrder();
       setCheckOrder(result.data.checkOrder);
-      console.log(result.data.checkOrder);
+      // console.log(result.data.checkOrder);
     };
     fetchCheckOrder();
   }, []);
@@ -31,7 +31,7 @@ export default function OrderContextProvider({ children }) {
     const res = await axios.post(`/order/${productId}`);
     const newOrder = res.data.OrderItems;
     setOrder(newOrder);
-    console.log(newOrder);
+    // console.log(newOrder);
   };
 
   const handleUpdateCart = async (orderItemId, input) => {

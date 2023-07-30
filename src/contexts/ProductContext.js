@@ -16,11 +16,11 @@ export default function ProductContextProvider({ children }) {
     price: '',
     quantity: '',
   });
-  console.log(newProduct);
+  // console.log(newProduct);
   const [newProductImage, setNewProductImage] = useState({
     image: null,
   });
-  console.log(newProductImage);
+  // console.log(newProductImage);
   const [error, setError] = useState(false);
   const [brand, setBrand] = useState([]);
   const [options, setOptions] = useState();
@@ -36,7 +36,7 @@ export default function ProductContextProvider({ children }) {
   formData.append('name', newProduct.name);
   formData.append('price', newProduct.price);
   formData.append('description', newProduct.description);
-  console.log(formData);
+  // console.log(formData);
 
   const fetchProduct = async () => {
     const res = await adminApi.getAllProduct();
@@ -64,11 +64,6 @@ export default function ProductContextProvider({ children }) {
       [e.target.name]: e.target.value,
     }));
   };
-
-  const createProduct = newProduct => {
-    setProduct([newProduct, ...product]);
-  };
-  console.log(createProduct);
 
   const onClose = () => {
     setOpen(false);
