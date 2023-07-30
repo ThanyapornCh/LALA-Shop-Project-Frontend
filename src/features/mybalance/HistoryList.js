@@ -20,7 +20,9 @@ export default function HistoryList({
               <h1 className="font-base text-green-500 uppercase">
                 {orderStatus}
               </h1>
-              <p className="font-light text-gray-400">{timeSince(createdAt)}</p>
+              <p className="font-light text-gray-400 text-xs">
+                {timeSince(createdAt)}
+              </p>
             </div>
             <p className="text-sm teaxt-gray-600 font-normal pl-16">
               THB {totalPrice}

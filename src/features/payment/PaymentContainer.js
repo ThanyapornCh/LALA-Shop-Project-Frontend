@@ -1,3 +1,4 @@
+import CheckoutCreditCard from './CheckoutCreditCard';
 import PaymentAction from './PaymentAction';
 
 export default function PaymentContainer() {
@@ -12,6 +13,7 @@ export default function PaymentContainer() {
             Select payment method
           </p>
           <PaymentAction />
+          <CheckoutCreditCard />
         </div>
       </div>
     </>

@@ -1,20 +1,50 @@
-export default function PaymentForm() {
+import { useState } from 'react';
+import { saveAs } from 'file-saver';
+import useClickFileInput from '../../hooks/useClickFileInput';
+import Qrpayment from '../../assets/images/Qrpayment.jpg';
+import PaymentConfirmForm from './PaymentConfirmForm';
+import PaymentQrForm from './PaymentQrForm';
+
+export default function PaymentForm({ onSuccess }) {
+  const [step, setStep] = useState(1);
+  const { file, onCancel, handlePreviewImage } = useClickFileInput();
+
+  const downloadImage = () => {
+    saveAs(Qrpayment, 'Qr Payment');
+  };
+
+  const handleClickNext = () => {
+    if (step === 2) {
+      setStep(1);
+    } else if (step < 3) {
+      setStep(step + 1);
+    }
+  };
+  const handlePrevious = () => {
+    setStep(step - 1);
+  };
+
   return (
     <>
-      {/* <form action="https://api.globalprimepay.com/v3/qrcode" method="POST">
-        <input type="hidden" name="token" value="{token}" />
-        <input type="hidden" name="referenceNo" value="230717175558390" />
-        <input type="hidden" name="backgroundUrl" value="{backgroundUrl}" />
-        <input
-          type="number"
-          name="amount"
-          maxlength="13"
-          placeholder="Amount"
-          value="1.00"
+      {step === 1 ? (
+        <PaymentQrForm
+          downloadImage={downloadImage}
+          handleClickNext={handleClickNext}
         />
-        <br />
-        <input id="button" type="submit" value="Pay Now" />
-      </form> */}
+      ) : (
+        <></>
+      )}
+      {step === 2 ? (
+        <PaymentConfirmForm
+          file={file}
+          onCancel={onCancel}
+          handlePreviewImage={handlePreviewImage}
+          handlePrevious={handlePrevious}
+          onSuccess={onSuccess}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

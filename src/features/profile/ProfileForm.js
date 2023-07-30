@@ -20,17 +20,6 @@ export default function ProfileForm() {
               {authenticatedUser.firstName} {authenticatedUser.lastName}
             </h2>
           </div>
-          <div className="flex justify-center items-center my-2">
-            <Link to="/user/myaccount">
-              <button
-                className="w-full font-bold rounded-3xl px-10 py-2 text-white bg-blue-500
-              hover:bg-gradient-to-r from-green-400 to-sky-500 hover:drop-shadow-md duration-300 ease-in "
-                type="button"
-              >
-                My Account
-              </button>
-            </Link>
-          </div>
           <div className="flex justify-center  items-center my-2">
             <Link to="/user/orderstatus">
               <button

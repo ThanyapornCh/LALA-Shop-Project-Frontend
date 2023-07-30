@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Card } from '../../assets/icon';
 import Modal from '../../components/Modal';
-import { QrCode } from '../../assets/icon';
-import PaymentForm from './PaymentForm';
+import CheckoutCreditCardForm from './CheckoutCreditCardForm';
 
-export default function PaymentAction() {
+export default function CheckoutCreditCard() {
   const [open, setOpen] = useState();
   return (
     <>
@@ -13,14 +13,14 @@ export default function PaymentAction() {
           onClick={() => setOpen(true)}
         >
           <div className=" fill-gray-400 text-lg mx-3 border-gray-600 border-1 mr-2 py-2">
-            <QrCode />
+            <Card />
           </div>
           <span className="text-gray-600 font-medium text-base p-2 ml-6">
-            Qr code payment
+            Pay with credit card
           </span>
         </button>
         <Modal open={open} onClose={() => setOpen(false)}>
-          <PaymentForm onSuccess={() => setOpen(false)} />
+          <CheckoutCreditCardForm onSuccess={() => setOpen(false)} />
         </Modal>
       </div>
     </>

@@ -9,7 +9,7 @@ export default function MyBalanceContainer() {
           <div className="w-full  ">
             <MyBalanceCover />
           </div>
-          <div className="bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700  rounded-b-lg p-5  flex flex-col">
+          <div className="bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700  rounded-b-lg px-5 pt-5 pb-16  flex flex-col">
             <MyBalanceForm />
           </div>
         </div>
